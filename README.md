@@ -45,7 +45,7 @@
 > Codefolio - Deploy to your Heroku dyno
 
 ## Contributing
-Feel free to open issue or post pull request
+Feel free to open an issue or post a pull request
 
 All contributions are appreciated!
 
