@@ -1,0 +1,63 @@
+{
+  "name": "codefolio-api",
+  "version": "1.0.1",
+  "description": "Back-end API for Codefolio application.",
+  "keywords": [
+    "codefolio-api",
+    "api",
+    "developer",
+    "mongo",
+    "express",
+    "passport"
+  ],
+  "homepage": "https://github.com/msmfsd/codefolio-api#readme",
+  "bugs": {
+    "url": "https://github.com/msmfsd/codefolio-api/issues"
+  },
+  "license": "MIT",
+  "author": "msmfsd",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msmfsd/codefolio-api.git"
+  },
+  "scripts": {
+    "prod": "pm2 start server.js",
+    "dev": "nodemon server.js",
+    "lint": "./node_modules/.bin/eslint server.js api/ config/",
+    "mocha": "mocha --reporter spec --timeout 5000",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "test": "npm run lint && npm run mocha"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.9.2",
+    "compression": "^1.6.1",
+    "cors": "^2.7.1",
+    "crypto": "0.0.3",
+    "dotenv": "^2.0.0",
+    "express": "~4.9.8",
+    "express-flash": "0.0.2",
+    "express-session": "^1.13.0",
+    "express-validator": "^2.20.4",
+    "jwt-simple": "^0.3.1",
+    "logger-request": "^3.6.1",
+    "logging": "^2.0.21",
+    "method-override": "^2.3.5",
+    "moment": "^2.13.0",
+    "mongoose": "~4.2.4",
+    "nodemailer": "^2.4.1",
+    "passport": "^0.3.0",
+    "passport-jwt": "^1.2.1",
+    "passport-localapikey": "0.0.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.9.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.2",
+    "supertest": "^1.2.0"
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": false,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-console": [
+            1
+        ],
+        "indent": [
+            0,
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
+}
