@@ -54,6 +54,15 @@ module.exports.initDatabase = function(req, res, next) {
           {name: 'github.com/swoz', url: 'http://github.com/swoz'},
           {name: 'blogger.woz-blog.com', url: 'http://blogger.woz-blog.com'}
         ],
+        techIcons: [
+          {name: 'Rails', icon: 'rails-plain'},
+          {name: 'Javascript', icon: 'javascript-plain'},
+          {name: 'Git', icon: 'git-plain'},
+          {name: 'Bootstrap', icon: 'bootstrap-plain'},
+          {name: 'Symfony', icon: 'symfony-original'},
+          {name: 'PHP', icon: 'php-plain'},
+          {name: 'Nodejs', icon: 'nodejs-plain'}
+        ],
         avatar: {
           use: 'avatarBase64',
           avatarURL: '',

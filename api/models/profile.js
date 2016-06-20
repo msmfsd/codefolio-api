@@ -17,6 +17,7 @@ var ProfileSchema = new Schema({
   location: { type: Array, required: true },
   contacts: { type: Array, required: true },
   links: { type: Array, required: true },
+  techIcons: { type: Array, required: true },
   avatar: {
     use: { type: String },
     avatarURL: { type: String },
