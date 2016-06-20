@@ -21,7 +21,7 @@ var ProfileSchema = new Schema({
   avatar: {
     useDefault: { type: Boolean, required: true },
     customAvatar: { type: String },
-    defaultAvatar: { type: String, data: Buffer }
+    defaultAvatar: { type: String, data: Buffer, required: true }
   },
   layout: {
     theme: { type: String, required: true },
