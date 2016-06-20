@@ -19,9 +19,9 @@ var ProfileSchema = new Schema({
   links: { type: Array, required: true },
   techIcons: { type: Array, required: true },
   avatar: {
-    use: { type: String },
-    avatarURL: { type: String },
-    avatarBase64: { type: String, data: Buffer }
+    useDefault: { type: Boolean, required: true },
+    customAvatar: { type: String },
+    defaultAvatar: { type: String, data: Buffer }
   },
   layout: {
     theme: { type: String, required: true },
