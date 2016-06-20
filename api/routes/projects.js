@@ -52,7 +52,7 @@ module.exports.createProject = function(req, res) {
   // server side validation
   req.assert('name', 'Name field is empty.').notEmpty();
   req.assert('slug', 'Slug field is empty.').notEmpty();
-  req.assert('role', 'Name field is empty.').notEmpty();
+  req.assert('client', 'Name field is empty.').notEmpty();
   req.assert('active', 'Name field is empty.').notEmpty();
   req.assert('sticky', 'Name field is empty.').notEmpty();
   var errors = req.validationErrors();
@@ -61,20 +61,18 @@ module.exports.createProject = function(req, res) {
   var newProject = new Project({
     name: req.body.name,
     slug: req.body.slug,
-    role: req.body.role,
+    description: req.body.description,
+    client: req.body.client,
     active: req.body.active,
-    thumbImgURL: req.body.thumbImgURL,
-    clients: req.body.clients,
-    projectImages: req.body.projectImages,
+    media: req.body.media,
+    linkWeb: req.body.linkWeb,
+    linkRepo: req.body.linkRepo,
     projectTech: req.body.projectTech,
     codeSnippet: {
       display: req.body.codeSnippet.display,
       code: req.body.codeSnippet.code,
       language: req.body.codeSnippet.language
     },
-    projectURL: req.body.projectURL,
-    repoURL: req.body.repoURL,
-    projectLicence: req.body.projectLicence,
     viewOrder: req.body.viewOrder,
     sticky: req.body.sticky,
     dateModified: new Date(),

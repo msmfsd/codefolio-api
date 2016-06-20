@@ -14,26 +14,9 @@ var ProfileSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true, trim: true },
   bio: { type: String, required: true, trim: true },
-  location: {
-    display: { type: Boolean, required: true },
-    city: { type: String, required: true }
-  },
-  contacts: {
-    display: { type: Boolean, required: true },
-    feature: { type: String },
-    email: { type: String },
-    twitter: { type: String },
-    gitter: { type: String },
-    github: { type: String },
-    custom: { type: String }
-  },
-  links: {
-    display: { type: Boolean, required: true },
-    feature: { type: String },
-    github: { type: String },
-    blog: { type: String },
-    custom: { type: String }
-  },
+  location: { type: Array, required: true },
+  contacts: { type: Array, required: true },
+  links: { type: Array, required: true },
   avatar: {
     use: { type: String },
     avatarURL: { type: String },
@@ -41,7 +24,6 @@ var ProfileSchema = new Schema({
   },
   layout: {
     theme: { type: String, required: true },
-    highlightColor: { type: String, required: true },
     displayBgImage: { type: Boolean, required: true },
     bgImageURL: { type: String, required: false }
   },

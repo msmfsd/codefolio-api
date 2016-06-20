@@ -39,29 +39,21 @@ module.exports.initDatabase = function(req, res, next) {
       // create default profile
       var defaultProfile = new Profile({
         activeProfile: true,
-        name: 'Developer Name',
-        description: 'Front-end developer',
-        bio: 'Developer bio, Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        featuredContact: 'twitterHandle',
-        location: {
-          display: false,
-          city: 'Downtown'
-        },
-        contacts: {
-          display: true,
-          feature: 'twitter',
-          email: 'my@email.com',
-          twitter: '@mytwitterhandle',
-          gitter: '@mygitterhandle',
-          github: 'jbloggs'
-        },
-        links: {
-          display: true,
-          feature: 'github',
-          github: 'http://github.com/jbloggs',
-          blog: 'http://my.blog',
-          custom: 'http://someother.url'
-        },
+        name: 'Steve Wozniak',
+        description: 'Apple developer',
+        bio: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>',
+        location: [
+          {name: 'Silicon Valley, California', url: 'https://goo.gl/maps/yA6gDxKgoTU2'}
+        ],
+        contacts: [
+          {name: '@swozniak_apple', url: 'http://twitter.com/swozniak_apple'},
+          {name: '@my_gitter_handle', url: 'http://gitter.im/my_gitter_handle'},
+          {name: 'swozniak@email.com', url: 'mailto:swozniak@email.com'}
+        ],
+        links: [
+          {name: 'github.com/swoz', url: 'http://github.com/swoz'},
+          {name: 'blogger.woz-blog.com', url: 'http://blogger.woz-blog.com'}
+        ],
         avatar: {
           use: 'avatarBase64',
           avatarURL: '',
@@ -69,9 +61,8 @@ module.exports.initDatabase = function(req, res, next) {
         },
         layout: {
           theme: 'dark',
-          highlightColor: '#EE6E73',
           displayBgImage: true,
-          bgImageURL: 'background-image-code.jpg'
+          bgImageURL: 'background-image.jpg'
         },
         dateModified: new Date(),
         dateCreated: new Date()
