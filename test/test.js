@@ -175,7 +175,7 @@ describe('PUT /api/project/:id with jwt-token & update project', function() {
     request(server)
       .put('/api/project/' + projectId)
       .set({ 'Authorization': jwtToken })
-      .send({ role: 'Dummy role' })
+      .send({ client: 'New client name added by mocha test' })
       .expect(function(res){ res.body.success = true; })
       .expect(200, done);
   });
