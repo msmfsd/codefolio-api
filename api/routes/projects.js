@@ -51,6 +51,7 @@ module.exports.getProjectById = function(req, res) {
 module.exports.createProject = function(req, res) {
   // server side validation
   req.assert('name', 'Name field is empty.').notEmpty();
+  req.assert('role', 'Role field is empty.').notEmpty();
   req.assert('slug', 'Slug field is empty.').notEmpty();
   req.assert('client', 'Name field is empty.').notEmpty();
   req.assert('active', 'Name field is empty.').notEmpty();
@@ -60,6 +61,7 @@ module.exports.createProject = function(req, res) {
   // create new admin admin
   var newProject = new Project({
     name: req.body.name,
+    role: req.body.role,
     slug: req.body.slug,
     description: req.body.description,
     client: req.body.client,

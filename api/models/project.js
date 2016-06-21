@@ -11,6 +11,7 @@ var Schema              = mongoose.Schema;
  */
 var ProjectSchema = new Schema({
   name: { type: String, required: true },
+  role: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   client: { type: String, required: true },
