@@ -8,9 +8,7 @@
   * Format http status & JSON response
   *
   * @param status : Int
-  * @param success : Boolean
-  * @param message : String
-  * @param data : Object
+  * @param json : Object
   * @param res : Response Object
   * @return {}
   */
