@@ -5,6 +5,7 @@
  */
  var response            = require('../utils/response');
  var Project            = require('../models/project');
+ var Utils               = require('../utils');
 
 /**
   * Get all projects
@@ -96,9 +97,11 @@ module.exports.createProject = function(req, res) {
  */
 module.exports.updateProjectById = function(req, res) {
   var id = req.params.id.toString();
-  var updateData = req.body;
-  updateData.dateModified = new Date();
-  Project.findOneAndUpdate({ _id: id }, updateData, function(err, project) {
+  // add modified date
+  req.body.dateModified = new Date();
+  // convert to dot notation so objects retain other values
+  var dotData = Utils.toDot(req.body, '.');
+  Project.findOneAndUpdate({ _id: id }, dotData, function(err, project) {
     if (err) throw err;
     // if no profile found respond error
     if (!project) { return response(403, { success: false, message: 'Project not found: ' + id }, res); }
