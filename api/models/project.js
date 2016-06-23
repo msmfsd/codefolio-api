@@ -18,7 +18,11 @@ var ProjectSchema = new Schema({
   active: { type: Number, required: true },
   media: { type: Array, required: false },
   linkWeb: { type: Array, required: false },
-  linkRepo: { type: Array, required: false },
+  repo: {
+    repoUrl: { type: String, required: false },
+    repoUser: { type: String, required: false },
+    repoName: { type: String, required: false }
+  },
   projectTech: { type: Array, required: true },
   codeSnippet: {
     display: { type: Boolean, required: true, default: false },

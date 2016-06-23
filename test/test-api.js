@@ -20,7 +20,7 @@ var adminCredentials = {
   password: process.env.ADMIN_PW
 };
 var jwtToken = '';
-var projectId = '576748ab71a0766772c0eea5'; // ENSURE EXISTS
+var projectId = '576c6b92e015c64e941e89c6'; // ENSURE EXISTS
 var deleteProjectId = '57674cafdd1417ad729df896'; // ENSURE EXISTS
 var newProjectJSON = {
     role: "Frontend developer",
@@ -29,7 +29,11 @@ var newProjectJSON = {
     active: 1,
     media: ["cool-project-api-01.png", "cool-project-api-02.png"],
     linkWeb: [ {"name": "awesomesite55.com", "url": "http://awesomesite.com"} ],
-    linkRepo: [ {"name": "github.com/swoz/site55", "url": "http://github.com/swoz/site"} ],
+    repo: {
+      repoUrl: "http://github.com/Automattic/mongoose",
+      repoUser: "Automattic",
+      repoName: "mongoose"
+    },
     projectTech: ["PHP", "CSS3", "Express js", "React", "Javascript"],
     codeSnippet: {
       display: true,
