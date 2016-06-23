@@ -19,7 +19,8 @@ var ProfileSchema = new Schema({
   links: { type: Array, required: true },
   techIcons: { type: Array, required: true },
   avatar: {
-    useDefault: { type: Boolean, required: true },
+    use: { type: String, required: true },
+    grvatarEmail: { type: String },
     customAvatar: { type: String },
     defaultAvatar: { type: String, data: Buffer, required: true }
   },
