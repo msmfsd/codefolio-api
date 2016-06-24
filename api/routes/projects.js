@@ -70,9 +70,9 @@ module.exports.createProject = function(req, res) {
     media: req.body.media,
     linkWeb: req.body.linkWeb,
     repo: {
-      repoUrl: req.body.repoUrl,
-      repoUser: req.body.repoUser,
-      repoName: req.body.repoName
+      repoUrl: req.body.repo.repoUrl,
+      repoUser: req.body.repo.repoUser,
+      repoName: req.body.repo.repoName
     },
     projectTech: req.body.projectTech,
     codeSnippet: {

@@ -20,7 +20,7 @@ var adminCredentials = {
   password: process.env.ADMIN_PW
 };
 var jwtToken = '';
-var projectId = '576c6b92e015c64e941e89c6'; // ENSURE EXISTS
+var projectId = '576c70fef5c682da94734e88'; // ENSURE EXISTS
 var deleteProjectId = '57674cafdd1417ad729df896'; // ENSURE EXISTS
 var newProjectJSON = {
     role: "Frontend developer",
