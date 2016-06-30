@@ -19,6 +19,7 @@ var ProjectSchema = new Schema({
   media: { type: Array, required: false },
   linkWeb: { type: Array, required: false },
   repo: {
+    display: { type: Boolean, required: true },
     repoUrl: { type: String, required: false },
     repoUser: { type: String, required: false },
     repoName: { type: String, required: false }
