@@ -1,6 +1,6 @@
 # Codefolio API [![devDependency Status](https://david-dm.org/msmfsd/codefolio-api/dev-status.svg)](https://david-dm.org/msmfsd/codefolio-api#info=devDependencies) [![travis Status](https://api.travis-ci.org/msmfsd/codefolio-api.svg?branch=master)](https://travis-ci.org/msmfsd/codefolio-api)
 
-> RESTful API for Codefolio application
+> RESTful API for the Codefolio application
 
 #### Requirements
 - npm v3.8+ & node v5.8+
