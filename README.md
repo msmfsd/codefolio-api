@@ -3,7 +3,7 @@
 > RESTful API for the Codefolio application
 
 #### Requirements
-- npm v3.8+ & node v5.8+
+- npm v3.8+ & node v5+
 - MongoDB v2.6.5+
 - Codefolio - [get it here](https://github.com/msmfsd/codefolio).
 
