@@ -20,7 +20,7 @@ var ProfileSchema = new Schema({
   techIcons: { type: Array, required: true },
   avatar: {
     use: { type: String, required: true },
-    grvatarEmail: { type: String },
+    gravitarEmail: { type: String },
     customAvatar: { type: String },
     defaultAvatar: { type: String, data: Buffer, required: true }
   },

@@ -117,10 +117,8 @@ describe('PUT /api/profile with jwt-token & update profile', function() {
       .put('/api/profile')
       .set('Authorization', jwtToken)
       .send({
-        name: 'Steve Wozniak woo hooo',
-        avatar: {
-          useDefault: false
-        }
+        name: 'Steve Wozniak',
+        description: 'Updated by mocha test yeah'
       })
       .expect(function(res){ res.body.success = true; })
       .expect(200, done);
