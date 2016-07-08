@@ -78,7 +78,7 @@ module.exports.authenticate = function(req, res) {
         // save to db & send response
         admin.save(function(err) {
           if (err) { response(500, { success: false, message: 'lastLoggedIn or loggedOut not set' }, res); }
-          else { response(200, { success: true, message: 'Successful created admin!', token: 'JWT ' + token }, res); }
+          else { response(200, { success: true, message: 'Admin authenticated!', token: 'JWT ' + token }, res); }
         });
       }
       else { response(401, { success: false, message: 'Authentication failed. Wrong password.' }, res); }
