@@ -32,7 +32,7 @@
 ##### How to create your Codefolio site to connect to this Codefolio API
 1. Install Codefolio - it can be found here: [Codefolio](https://github.com/msmfsd/codefolio)
 2. Follow the Codefolio setup guide in the Codefolio Readme
-3. Update the Codefolio config with your Codefolio API's ADMIN_API_KEY from .env
+3. Update the Codefolio config with your Codefolio API's API_KEY from .env
 4. Update the Codefolio config with your server host name that you publish this API on to.
 
 

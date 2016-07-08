@@ -41,7 +41,7 @@ module.exports.register = function(req, res) {
       password: req.body.password,
       passwordResetToken: '',
       passwordResetExpires: null,
-      apikey: process.env.ADMIN_API_KEY,
+      apikey: process.env.API_KEY,
       lastLoggedIn: new Date(),
       loggedOut: true
     });

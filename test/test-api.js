@@ -14,7 +14,7 @@ var Profile               = require('../api/models/profile');
 
 // example vars
 var secret              = process.env.SESSION_SECRET;
-var apikey              = process.env.ADMIN_API_KEY;
+var apikey              = process.env.API_KEY;
 var adminCredentials = {
   email: process.env.ADMIN_EMAIL,
   password: process.env.ADMIN_PW
