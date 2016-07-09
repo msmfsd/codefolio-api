@@ -15,6 +15,7 @@ var logger              = require('logger-request');
 var flash               = require('express-flash');
 var expressValidator    = require('express-validator');
 var compress            = require('compression');
+var path                = require('path');
 var db                  = require('./config/db');
 var corsOptions         = require('./config/cors');
 var admin               = require('./api/routes/admin');
@@ -43,9 +44,9 @@ app.use(expressValidator());
 app.use(methodOverride());
 // only allow api calls from whitelisted sites
 app.use(cors(corsOptions));
-// allow static assets from public uploads folder
-app.use(express.static('uploads'));
-app.use('/uploads', express.static('uploads'));
+// allow whitelisted domains to load static assets from public uploads folder
+app.use(express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // configure passport authorization
 require('./config/passport')(passport);
 app.use(passport.initialize());
