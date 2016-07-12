@@ -15,13 +15,13 @@ var Profile               = require('../api/models/profile');
 // example vars
 var secret              = process.env.SESSION_SECRET;
 var apikey              = process.env.API_KEY;
+// ensure these match registered admin on dev server
 var adminCredentials = {
-  email: process.env.ADMIN_EMAIL,
-  password: process.env.ADMIN_PW
+  email: process.env.DEV_TEST_ADMIN_EMAIL,
+  password: process.env.DEV_TEST_ADMIN_PW
 };
 var jwtToken = '';
 var projectId = '576c70fef5c682da94734e88'; // ENSURE EXISTS
-var deleteProjectId = '57674cafdd1417ad729df896'; // ENSURE EXISTS
 var newProjectJSON = {
     role: "Frontend developer",
     description: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",
@@ -182,25 +182,6 @@ describe('PUT /api/project/:id with jwt-token & update project', function() {
       .expect(200, done);
   });
 });
-
-/**
- * API DELETE remove a project
- */
-/*describe('DELETE /api/project/:id with jwt-token & remove project', function() {
-
-  // TODO get last project added so this wont fail after 1 test..
-  //var lastProjectId = Project.findOne({ active: 1 });
-  //var id = new mongoose.Types.ObjectId(lastProjectId._id);
-  var id = deleteProjectId; // ENSURE ID EXISTS FOR DELETE
-
-  it('should return 200 OK', function(done) {
-    request(server)
-      .delete('/api/project/' + id)
-      .set({ 'Authorization': jwtToken })
-      .expect(function(res){ res.body.success = true; })
-      .expect(200, done);
-  });
-});*/
 
 /****************************************************
 -------------- /ERROR ROUTES

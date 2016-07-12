@@ -45,7 +45,7 @@ app.use(methodOverride());
 // only allow api calls from whitelisted sites
 app.use(cors(corsOptions));
 // allow whitelisted domains to load static assets from public uploads folder
-app.use(express.static(path.join(__dirname, 'uploads')))
+app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // configure passport authorization
 require('./config/passport')(passport);

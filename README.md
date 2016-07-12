@@ -1,22 +1,26 @@
-# Codefolio API [![devDependency Status](https://david-dm.org/msmfsd/codefolio-api/dev-status.svg)](https://david-dm.org/msmfsd/codefolio-api#info=devDependencies) [![travis Status](https://api.travis-ci.org/msmfsd/codefolio-api.svg?branch=master)](https://travis-ci.org/msmfsd/codefolio-api)
+# Codefolio API [![Build Status](https://travis-ci.com/msmfsd/codefolio-api.svg?token=pQuZQVJCHi2ifpjKbzd7&branch=master)](https://travis-ci.com/msmfsd/codefolio-api)
 
 > RESTful API for the Codefolio application
 
 #### Requirements
-- npm v3.8+ & node v5+
+- npm v3+ & node v5+
 - MongoDB v2.6.5+
 - Codefolio - [get it here](https://github.com/msmfsd/codefolio).
 
 ## Getting started
-1. Rename .env.example to .env and enter your settings.
-2. NOTE: Git ignore your .env file - it should never by shared to the public
+1. Clone this repo with ```git clone https://github.com/msmfsd/codefolio-api.git```
+2. Open directory
 3. Run ```npm install```
-4. Note your front-end Codefolio's default profile will be created by the Codefolio API server on its initial startup so launch your Codefolio API server before trying to setup your Codefolio application.
+4. * Remove existing git directory with ```rm -rf .git```
+5. Make your own .git with ```git init```
+6. Rename .env.example to .env and enter your settings.
+7. NOTE: Git ignore your .env file - it should never by shared to the public
+8. Note that your default profile will be automatically saved to db with dummy content on its initial startup so launch this Codefolio API server before trying to setup your Codefolio application to view and administer your folio.
 
 ## Start dev server
 1. Run ```mongod``` command
 2. Run ```npm dev``` command
-2. Open browser at [http://localhost:8090/](http://localhost:8090/)
+3. Open browser at [http://localhost:8090/](http://localhost:8090/)
 
 ## Tests
 1. Run ```npm run lint``` command

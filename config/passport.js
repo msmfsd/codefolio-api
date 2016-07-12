@@ -30,8 +30,7 @@ module.exports = function(passport) {
    *
    * @return {Function}
    */
-  passport.use(new LocalAPIKeyStrategy(
-  function(apikey, done) {
+  passport.use(new LocalAPIKeyStrategy(function(apikey, done) {
     Admin.findOne({ apikey: apikey }, function (err, admin) {
       if (err) return done(err, false);
       if (!admin) return done(null, false);

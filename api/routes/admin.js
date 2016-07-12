@@ -65,7 +65,7 @@ module.exports.authenticate = function(req, res) {
   Admin.findOne({ email: req.body.email }, function(err, admin) {
     if (err) throw err;
     // if no admin found respond error
-    if (!admin) { return response(403, { success: false, message: 'Authentication failed. Admin not found.' }, res); }
+    if (!admin) { return response(403, { success: false, message: 'Authentication failed. Admin ' + req.body.email + ' not found.' }, res); }
     // run the compare password method
     admin.comparePassword(req.body.password, function(err, isMatch) {
       if (isMatch && !err) {

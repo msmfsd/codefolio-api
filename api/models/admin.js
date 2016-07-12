@@ -5,7 +5,7 @@
  */
 var mongoose            = require('mongoose');
 var Schema              = mongoose.Schema;
-var bcrypt              = require('bcrypt-nodejs');
+var bcrypt              = require('bcryptjs');
 var moment              = require('moment');
 
 /**
