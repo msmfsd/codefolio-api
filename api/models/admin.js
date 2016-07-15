@@ -65,7 +65,7 @@ AdminSchema.methods.comparePassword = function (passw, cb) {
 AdminSchema.methods.loginExpired = function(oldDate) {
   var now = new Date();
   var hours = moment(now).diff(oldDate, 'hours');
-  if (hours < 24) { return false; }
+  if (hours < 48) { return false; }
   return true;
 };
 

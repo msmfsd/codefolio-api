@@ -60,11 +60,10 @@ app.use(db.initDatabase);
  */
 app.get(['/', '/api'], function(req, res) { response(200, { success:true, message:'API' }, res); });
 // admin routes
-app.get('/api/admin', passport.authenticate('jwt', {session: false}), admin.settings);
-app.put('/api/admin', passport.authenticate('jwt', {session: false}), admin.updateSettings);
-app.get('/api/admin/logout', passport.authenticate('jwt', {session: false}), admin.logout);
 app.post('/api/admin/register', admin.register);
 app.post('/api/admin/authenticate', admin.authenticate);
+app.put('/api/admin', passport.authenticate('jwt', {session: false}), admin.updateSettings);
+app.get('/api/admin/logout', passport.authenticate('jwt', {session: false}), admin.logout);
 app.post('/api/admin/forgotpassword', admin.forgotPassword);
 app.post('/api/admin/resetpassword/:token', admin.resetPassword);
 // project routes

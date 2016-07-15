@@ -3,7 +3,7 @@
  * Copyright(c) 2016 MSMFSD
  * MIT Licensed
  */
-var whitelist = ['http://codefolio-static.dev', 'http://localhost:3000'];
+var whitelist = ['http://codefolio-static.dev', 'http://localhost:3000', 'http://127.0.0.1:3000'];
 
 module.exports = {
 

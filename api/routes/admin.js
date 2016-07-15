@@ -78,46 +78,18 @@ module.exports.authenticate = function(req, res) {
         // save to db & send response
         admin.save(function(err) {
           if (err) { response(500, { success: false, message: 'lastLoggedIn or loggedOut not set' }, res); }
-          else { response(200, { success: true, message: 'Admin authenticated!', token: 'JWT ' + token }, res); }
+          else { response(200, {
+            success: true,
+            message: 'Admin authenticated!',
+            username: admin.email,
+            lastLoggedIn: admin.lastLoggedIn, 
+            token: 'JWT ' + token
+          }, res); }
         });
       }
       else { response(401, { success: false, message: 'Authentication failed. Wrong password.' }, res); }
     });
   });
-};
-
-/**
- * Admin settings
- *
- *  route: /api/admin
- *  @request GET
- *  @api private {jwt}
- */
-module.exports.settings = function(req, res) {
-  var token = Utils.getToken(req.headers);
-  if (token) {
-    var decoded = jwt.decode(token, process.env.SESSION_SECRET);
-    Admin.findOne({ email: decoded.email }, '_id email lastLoggedIn loggedOut', function(err, admin) {
-      if (err) throw err;
-      // admin found?
-      if (!admin) { return response(403, { success: false, message: 'Authentication failed. Admin not found.' }, res); }
-      // logged out or login expired?
-      var lastLogin = admin.lastLoggedIn;
-      // if has admin logged out or if login has expired..
-      if(admin.loggedOut) { return response(500, { success: false, message: 'Admin is currently logged out.' }, res); }
-      else if(admin.loginExpired(lastLogin)) {
-        // set loggedOut to true
-        admin.loggedOut = true;
-        // save to db & send response
-        admin.save(function(err) {
-          if (err) { response(500, { success: false, message: 'Database save error.' }, res); }
-          else { response(403, { success: false, message: 'Login expired, admin logged out.' }, res); }
-        });
-      }
-      else { response(200, { success: true, message: 'Welcome administrator: ' + admin.email, data: admin }, res); }
-    });
-  }
-  else { response(403, { success: false, message: 'No token provided.' }, res); }
 };
 
 /**

@@ -79,14 +79,15 @@ describe('POST /api/admin/authenticate is 200 OK & confirm that auth jwt-token i
 });
 
 /**
- * API POST authenticate
- * Confirm a admin can access admin settings route using a jwt-token
+ * API POST update admin
+ * Confirm a admin can update admin password using a jwt-token
  */
-describe('GET /api/admin with jwt-token', function() {
+describe('PUT /api/admin update admin password with jwt-token', function() {
   it('should return 200 OK', function(done) {
     request(server)
-      .get('/api/admin')
+      .put('/api/admin')
       .set('Authorization', jwtToken)
+      .send({ password: adminCredentials.password })
       .expect(function(res){ res.body.success = true; })
       .expect(200, done);
   });
