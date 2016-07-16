@@ -20,18 +20,16 @@
 ## Start dev server
 1. Run ```mongod``` command
 2. Run ```npm dev``` command
-3. Open browser at [http://localhost:8090/](http://localhost:8090/)
-
-## Tests
-1. Run ```npm run lint``` command
-2. Run ```npm run test``` command
+3. Use [Postman](https://www.getpostman.com/) to test your API routes @ [http://localhost:8090/api/](http://localhost:8090/api/)
 
 ## Start production server [Linux/Mac]
 1. Upload your code and ensure requirements as above
 2. Run ```mongod``` command
 3. Run ```npm install``` command
 4. Run ```npm install -g pm2``` command
+5. Configure your server eg. [pm2 nginx guide](http://pm2.keymetrics.io/docs/tutorials/pm2-nginx-production-setup)
 5. Run ```pm2 start server.js``` command
+6. Point your API domain to your server
 
 ##### How to create your Codefolio site to connect to this Codefolio API
 1. Install Codefolio - it can be found here: [Codefolio](https://github.com/msmfsd/codefolio)
