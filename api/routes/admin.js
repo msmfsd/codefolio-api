@@ -33,7 +33,13 @@ module.exports.register = function(req, res) {
     req.assert('password', 'Password must be between 6 and 14 characters.').len(6, 14);
     req.sanitize('email').normalizeEmail();
     var errors = req.validationErrors();
-    if (errors) { return response(500, { success:false, message: errors }, res); }
+    if (errors) {
+      var allErrors = '';
+      errors.map(function(item) {
+        allErrors += item.msg + ' ';
+      });
+      return response(500, { success:false, message: allErrors }, res);
+    }
     // create new admin admin
     var newAdmin = new Admin({
       activeAdmin: true,
@@ -82,7 +88,7 @@ module.exports.authenticate = function(req, res) {
             success: true,
             message: 'Admin authenticated!',
             username: admin.email,
-            lastLoggedIn: admin.lastLoggedIn, 
+            lastLoggedIn: admin.lastLoggedIn,
             token: 'JWT ' + token
           }, res); }
         });
@@ -106,7 +112,13 @@ module.exports.updateSettings = function(req, res) {
     // validate new password
     req.assert('password', 'Password must be between 6 and 14 characters.').len(6, 14);
     var errors = req.validationErrors();
-    if (errors) { return response(500, { success:false, message: errors }, res); }
+    if (errors) {
+      var allErrors = '';
+      errors.map(function(item) {
+        allErrors += item.msg + ' ';
+      });
+      return response(500, { success:false, message: allErrors }, res);
+    }
     // update password
     // find admin
     Admin.findOne({ email: decoded.email }, function(err, admin) {
@@ -186,7 +198,13 @@ module.exports.forgotPassword = function(req, res) {
   req.assert('email', 'Email field is empty.').notEmpty();
   req.assert('email', 'Email is not valid.').isEmail();
   var errors = req.validationErrors();
-  if (errors) { return response(500, { success:false, message: errors }, res); }
+  if (errors) {
+    var allErrors = '';
+    errors.map(function(item) {
+      allErrors += item.msg + ' ';
+    });
+    return response(500, { success:false, message: allErrors }, res);
+  }
   // cont.
   async.waterfall([
     function(done) {
@@ -201,7 +219,7 @@ module.exports.forgotPassword = function(req, res) {
       Admin.findOne({ email: req.body.email.toLowerCase() }, function(err, admin) {
         if (err) throw err;
         // if no admin found respond error
-        if (!admin) { return response(403, { success: false, message: 'Admin ' + req.body.email + ' not found, please enter correct email.' }, res); }
+        if (!admin) { return response(403, { success: false, message: 'Admin ' + req.body.email + ' not found, please enter your registered admin email.' }, res); }
         // update db w token with expiry of 2h
         admin.passwordResetToken = token;
         admin.passwordResetExpires = Date.now() + 7200000; // 2 hours
@@ -226,7 +244,7 @@ module.exports.forgotPassword = function(req, res) {
         subject: 'Reset your admin password on Codefolio',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your Codefolio admin account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/api/admin/resetpassword/' + token + '\n\n' +
+          req.body.reseturl + '/' + token + '\n\n' +
           'If you did not request this, please ignore this email and your password will remain unchanged.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
@@ -251,7 +269,13 @@ module.exports.resetPassword = function(req, res, next) {
   req.assert('password', 'Password must be between 6 and 14 characters.').len(6, 14);
   req.assert('confirm', 'Passwords must match.').equals(req.body.password);
   var errors = req.validationErrors();
-  if (errors) { return response(500, { success:false, message: errors }, res); }
+  if (errors) {
+    var allErrors = '';
+    errors.map(function(item) {
+      allErrors += item.msg + ' ';
+    });
+    return response(500, { success:false, message: allErrors }, res);
+  }
   // cont.
   async.waterfall([
     function(done) {

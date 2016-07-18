@@ -58,7 +58,13 @@ module.exports.createProject = function(req, res) {
   req.assert('active', 'Name field is empty.').notEmpty();
   req.assert('sticky', 'Name field is empty.').notEmpty();
   var errors = req.validationErrors();
-  if (errors) { return response(500, { success:false, message: errors }, res); }
+  if (errors) {
+    var allErrors = '';
+    errors.map(function(item) {
+      allErrors += item.msg + ' ';
+    });
+    return response(500, { success:false, message: allErrors }, res);
+  }
   // create new admin admin
   var newProject = new Project({
     name: req.body.name,
