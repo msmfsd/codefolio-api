@@ -17,7 +17,7 @@ var secret              = process.env.SESSION_SECRET;
 var apikey              = process.env.API_KEY;
 // ensure these match registered admin on dev server
 var adminCredentials = {
-  email: process.env.DEV_TEST_ADMIN_EMAIL,
+  username: process.env.DEV_TEST_ADMIN_USERNAME,
   password: process.env.DEV_TEST_ADMIN_PW
 };
 var jwtToken = '';
@@ -118,7 +118,7 @@ describe('PUT /api/profile with jwt-token & update profile', function() {
       .put('/api/profile')
       .set('Authorization', jwtToken)
       .send({
-        name: 'Steve Wozniak',
+        name: 'Bill Gates',
         description: 'Updated by mocha test yeah'
       })
       .expect(function(res){ res.body.success = true; })

@@ -26,12 +26,12 @@ module.exports.register = function(req, res) {
   Admin.findOne({ activeAdmin: true }, function(err, admin) {
     if (err) throw err;
     // Only 1 admin allowed
-    if (admin) { return response(500, { success: false, message: 'Admin already created with email: ' + admin.email }, res); }
+    if (admin) { return response(500, { success: false, message: 'Admin already created with username: ' + admin.username }, res); }
     // server side validation
-    req.assert('email', 'Email field is empty.').notEmpty();
-    req.assert('email', 'Email is not valid.').isEmail();
+    req.assert('username', 'Username field is empty.').notEmpty();
+    req.assert('username', 'Username is not valid email.').isEmail();
     req.assert('password', 'Password must be between 6 and 14 characters.').len(6, 14);
-    req.sanitize('email').normalizeEmail();
+    req.sanitize('username').normalizeEmail();
     var errors = req.validationErrors();
     if (errors) {
       var allErrors = '';
@@ -43,7 +43,7 @@ module.exports.register = function(req, res) {
     // create new admin admin
     var newAdmin = new Admin({
       activeAdmin: true,
-      email: req.body.email,
+      username: req.body.username,
       password: req.body.password,
       passwordResetToken: '',
       passwordResetExpires: null,
@@ -67,11 +67,11 @@ module.exports.register = function(req, res) {
  *  @api public
  */
 module.exports.authenticate = function(req, res) {
-  // find admin by email address
-  Admin.findOne({ email: req.body.email }, function(err, admin) {
+  // find admin by username
+  Admin.findOne({ username: req.body.username }, function(err, admin) {
     if (err) throw err;
     // if no admin found respond error
-    if (!admin) { return response(403, { success: false, message: 'Authentication failed. Admin ' + req.body.email + ' not found.' }, res); }
+    if (!admin) { return response(403, { success: false, message: 'Authentication failed. Admin ' + req.body.username + ' not found.' }, res); }
     // run the compare password method
     admin.comparePassword(req.body.password, function(err, isMatch) {
       if (isMatch && !err) {
@@ -87,7 +87,7 @@ module.exports.authenticate = function(req, res) {
           else { response(200, {
             success: true,
             message: 'Admin authenticated!',
-            username: admin.email,
+            username: admin.username,
             lastLoggedIn: admin.lastLoggedIn,
             token: 'JWT ' + token
           }, res); }
@@ -121,7 +121,7 @@ module.exports.updateSettings = function(req, res) {
     }
     // update password
     // find admin
-    Admin.findOne({ email: decoded.email }, function(err, admin) {
+    Admin.findOne({ username: decoded.username }, function(err, admin) {
       if (err) throw err;
       // if no admin found respond error
       if (!admin) { return response(403, { success: false, message: 'Update failed. Admin not found.' }, res); }
@@ -168,7 +168,7 @@ module.exports.logout = function(req, res) {
     // decode admin details from token
     var decoded = jwt.decode(token, process.env.SESSION_SECRET);
     // find admin
-    Admin.findOne({ email: decoded.email }, function(err, admin) {
+    Admin.findOne({ username: decoded.username }, function(err, admin) {
       if (err) throw err;
       // if no admin found respond error
       if (!admin) { return response(403, { success: false, message: 'Logout failed. Admin not found.' }, res); }
@@ -195,8 +195,8 @@ module.exports.logout = function(req, res) {
 */
 module.exports.forgotPassword = function(req, res) {
   // server side validation
-  req.assert('email', 'Email field is empty.').notEmpty();
-  req.assert('email', 'Email is not valid.').isEmail();
+  req.assert('username', 'Username field is empty.').notEmpty();
+  req.assert('username', 'Username is not a valid email.').isEmail();
   var errors = req.validationErrors();
   if (errors) {
     var allErrors = '';
@@ -215,11 +215,11 @@ module.exports.forgotPassword = function(req, res) {
       });
     },
     function(token, done) {
-      // find admin by email address
-      Admin.findOne({ email: req.body.email.toLowerCase() }, function(err, admin) {
+      // find admin by username
+      Admin.findOne({ username: req.body.username.toLowerCase() }, function(err, admin) {
         if (err) throw err;
         // if no admin found respond error
-        if (!admin) { return response(403, { success: false, message: 'Admin ' + req.body.email + ' not found, please enter your registered admin email.' }, res); }
+        if (!admin) { return response(403, { success: false, message: 'Admin ' + req.body.username + ' not found, please enter your registered admin username.' }, res); }
         // update db w token with expiry of 2h
         admin.passwordResetToken = token;
         admin.passwordResetExpires = Date.now() + 7200000; // 2 hours
@@ -239,16 +239,16 @@ module.exports.forgotPassword = function(req, res) {
         }
       });
       var mailOptions = {
-        to: admin.email,
+        to: admin.username,
         from: process.env.SERVER_SMTP_FROM_ADDRESS,
-        subject: 'Reset your admin password on Codefolio',
-        text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your Codefolio admin account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+        subject: 'Reset admin password link for your Codefolio website',
+        text: 'You recently requested a password reset for your Codefolio admin account.\n\n' +
+          'Please click on the following link, or paste this link into your browser to complete the process:\n\n' +
           req.body.reseturl + '/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          'This link is valid for the next 24 hours. If you did not request this link, please ignore this email and your password will remain unchanged.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
-        response(200, { success: true, message: 'A reset admin password link has been sent to: ' + admin.email }, res);
+        response(200, { success: true, message: 'A reset admin password link has been sent to: ' + admin.username }, res);
         done(err);
       });
     }
@@ -307,11 +307,11 @@ module.exports.resetPassword = function(req, res, next) {
         }
       });
       var mailOptions = {
-        to: admin.email,
+        to: admin.username,
         from: process.env.SERVER_SMTP_FROM_ADDRESS,
         subject: 'Your Codefolio admin password has been changed',
         text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your Codefolio admin account ' + admin.email + ' has just been changed.\n'
+          'This is a confirmation that the password for your Codefolio admin account ' + admin.username + ' has just been changed.\n'
       };
       transporter.sendMail(mailOptions, function(err) {
         response(200, { success: true, message: 'Success! Your password has been changed.' }, res);

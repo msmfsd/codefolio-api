@@ -13,7 +13,7 @@ var moment              = require('moment');
  */
 var AdminSchema = new Schema({
   activeAdmin: { type: Boolean, required: true, default: true },
-  email: { type: String, unique: true, required: true },
+  username: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   passwordResetToken: String,
   passwordResetExpires: Date,
