@@ -18,7 +18,6 @@ var AdminSchema = new Schema({
   passwordResetToken: String,
   passwordResetExpires: Date,
   apikey: { type: String, required: true },
-  loggedOut: { type: Boolean, required: true },
   lastLoggedIn: { type: Date, required: true }
 });
 

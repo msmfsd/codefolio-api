@@ -48,8 +48,7 @@ module.exports.register = function(req, res) {
       passwordResetToken: '',
       passwordResetExpires: null,
       apikey: process.env.API_KEY,
-      lastLoggedIn: new Date(),
-      loggedOut: true
+      lastLoggedIn: new Date()
     });
     newAdmin.save(function(err) {
       // send response
@@ -79,11 +78,9 @@ module.exports.authenticate = function(req, res) {
         var token = jwt.encode(admin, process.env.SESSION_SECRET);
         // update admin lastLoggedIn field
         admin.lastLoggedIn = new Date();
-        // set loggedOut to false
-        admin.loggedOut = false;
         // save to db & send response
         admin.save(function(err) {
-          if (err) { response(500, { success: false, message: 'lastLoggedIn or loggedOut not set' }, res); }
+          if (err) { response(500, { success: false, message: 'lastLoggedIn not set on db' }, res); }
           else { response(200, {
             success: true,
             message: 'Admin authenticated!',
@@ -125,30 +122,13 @@ module.exports.updateSettings = function(req, res) {
       if (err) throw err;
       // if no admin found respond error
       if (!admin) { return response(403, { success: false, message: 'Update failed. Admin not found.' }, res); }
-      // logged out or login expired?
-      var lastLogin = admin.lastLoggedIn;
-      // if has admin logged out or if login has expired..
-      if(admin.loggedOut) { return response(500, { success: false, message: 'Admin is currently logged out.' }, res); }
-      else if(admin.loginExpired(lastLogin)) {
-        // set loggedOut to true
-        admin.loggedOut = true;
-        // save to db & send response
-        admin.save(function(err) {
-          if (err) { response(500, { success: false, message: 'Database save error.' }, res); }
-          else { response(403, { success: false, message: 'Login expired, admin logged out.' }, res); }
-        });
-      }
-      else {
-        // update new password
-        admin.password = req.body.password;
-        // set loggedOut to true for security
-        admin.loggedOut = true;
-        // save to db & send response
-        admin.save(function(err) {
-          if (err) { return response(500, { success: false, message: 'Database save error.' }, res); }
-          response(200, { success: true, message: 'Admin password updated. You have been logged out.' }, res);
-        });
-      }
+      // update new password
+      admin.password = req.body.password;
+      // save to db & send response
+      admin.save(function(err) {
+        if (err) { return response(500, { success: false, message: 'Database save error.' }, res); }
+        response(200, { success: true, message: 'Admin password updated.' }, res);
+      });
     });
   }
   else { response(403, { success: false, message: 'No token provided.' }, res); }
@@ -172,15 +152,8 @@ module.exports.logout = function(req, res) {
       if (err) throw err;
       // if no admin found respond error
       if (!admin) { return response(403, { success: false, message: 'Logout failed. Admin not found.' }, res); }
-      // already logged out?
-      if(admin.loggedOut) { return response(403, { success: false, message: 'Logout failed. Admin was already logged out.' }, res); }
-      // set loggedOut to true
-      admin.loggedOut = true;
-      // save to db & send response
-      admin.save(function(err) {
-        if (err) { return response(500, { success: false, message: 'Database save error.' }, res); }
-        response(200, { success: true, message: 'Admin loggedOut: ' + admin.loggedOut }, res);
-      });
+      // logout success
+      return response(200, { success: true, message: 'Admin logged out.' }, res);
     });
   }
   else { response(403, { success: false, message: 'No token provided.' }, res); }
