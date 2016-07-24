@@ -30,14 +30,14 @@ var newProjectJSON = {
     media: ["cool-project-api-01.png", "cool-project-api-02.png"],
     linkWeb: [ {"name": "awesomesite55.com", "url": "http://awesomesite.com"} ],
     repo: {
-      display: true,
+      display: 'yes',
       repoUrl: "http://github.com/Automattic/mongoose",
       repoUser: "Automattic",
       repoName: "mongoose"
     },
     projectTech: ["PHP", "CSS3", "Express js", "React", "Javascript"],
     codeSnippet: {
-      display: true,
+      display: 'yes',
       code: "TO DO PAST IN",
       language: "php"
     },

@@ -21,12 +21,12 @@ var ProfileSchema = new Schema({
   avatar: {
     use: { type: String, required: true },
     gravitarEmail: { type: String },
-    customAvatar: { type: String },
+    customAvatar: { type: String, data: Buffer },
     defaultAvatar: { type: String, data: Buffer, required: true }
   },
   layout: {
     theme: { type: String, required: true },
-    displayBgImage: { type: Boolean, required: true },
+    displayBgImage: { type: String, required: true },
     bgImageURL: { type: String, required: false }
   },
   dateModified: { type: Date, required: true, default: Date.now },

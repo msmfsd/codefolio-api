@@ -19,14 +19,14 @@ var ProjectSchema = new Schema({
   media: { type: Array, required: false },
   linkWeb: { type: Array, required: false },
   repo: {
-    display: { type: Boolean, required: true },
+    display: { type: String, required: true },
     repoUrl: { type: String, required: false },
     repoUser: { type: String, required: false },
     repoName: { type: String, required: false }
   },
   projectTech: { type: Array, required: true },
   codeSnippet: {
-    display: { type: Boolean, required: true, default: false },
+    display: { type: String, required: true, default: false },
     code: { type: String, required: false },
     language: { type: String, required: false }
   },

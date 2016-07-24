@@ -15,7 +15,7 @@
   *  @api private {apikey}
   */
 module.exports.getProjects = function(req, res) {
-  Project.find().sort({ sticky: -1, viewOrder: 1, dateCreated: -1 }).exec(function(err, projects) {
+  Project.find({active: 1}).sort({ sticky: -1, viewOrder: 1, dateCreated: -1 }).exec(function(err, projects) {
     if (err) throw err;
     // at least 1 project?
     if (!projects || projects.length === 0) { return response(500, { success:false, message: 'There are no active projects.' }, res); }
