@@ -54,9 +54,9 @@ module.exports.createProject = function(req, res) {
   req.assert('name', 'Name field is empty.').notEmpty();
   req.assert('role', 'Role field is empty.').notEmpty();
   req.assert('slug', 'Slug field is empty.').notEmpty();
-  req.assert('client', 'Name field is empty.').notEmpty();
-  req.assert('active', 'Name field is empty.').notEmpty();
-  req.assert('sticky', 'Name field is empty.').notEmpty();
+  req.assert('client', 'Client field is empty.').notEmpty();
+  req.assert('active', 'Active field is empty.').notEmpty();
+  req.assert('sticky', 'Sticky field is empty.').notEmpty();
   var errors = req.validationErrors();
   if (errors) {
     var allErrors = '';
