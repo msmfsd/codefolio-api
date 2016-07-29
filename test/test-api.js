@@ -21,7 +21,7 @@ var adminCredentials = {
   password: process.env.DEV_TEST_ADMIN_PW
 };
 var jwtToken = '';
-var projectId = '576c71415572320d95020649'; // ENSURE EXISTS
+var projectId = '579ae8621dd331ff1c4c4120'; // ENSURE EXISTS
 var newProjectJSON = {
     role: "Frontend developer",
     description: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",
@@ -38,8 +38,7 @@ var newProjectJSON = {
     projectTech: ["PHP", "CSS3", "Express js", "React", "Javascript"],
     codeSnippet: {
       display: 'yes',
-      code: "TO DO PAST IN",
-      language: "php"
+      code: "TO DO PAST IN"
     },
     viewOrder: 52,
     sticky: 0,

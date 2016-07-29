@@ -21,6 +21,18 @@ module.exports.getToken = function (headers) {
 };
 
 /**
+ * Format file for saving to disk
+ *
+ * @param filename : string
+ * @return {String}
+ */
+module.exports.formatFileName = function (filename) {
+  var formatted = filename.replace(/\s/g, '').toLowerCase();
+  formatted = formatted.substr(0, formatted.lastIndexOf('.')) + '-' + Date.now() + '.' + formatted.split('.').pop();
+  return formatted;
+};
+
+/**
  * toDot
  * transforms object to dot notation
  * modified from //github.com/elementary/houston/blob/master/src/lib/helpers/dotNotation.js

@@ -27,8 +27,7 @@ var ProjectSchema = new Schema({
   projectTech: { type: Array, required: true },
   codeSnippet: {
     display: { type: String, required: true, default: false },
-    code: { type: String, required: false },
-    language: { type: String, required: false }
+    code: { type: String, required: false }
   },
   viewOrder: { type: Number },
   sticky: { type: Number, required: true },

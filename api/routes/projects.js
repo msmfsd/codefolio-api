@@ -65,7 +65,7 @@ module.exports.createProject = function(req, res) {
     });
     return response(500, { success:false, message: allErrors }, res);
   }
-  // create new admin admin
+  // create new project
   var newProject = new Project({
     name: req.body.name,
     role: req.body.role,
@@ -84,8 +84,7 @@ module.exports.createProject = function(req, res) {
     projectTech: req.body.projectTech,
     codeSnippet: {
       display: req.body.codeSnippet.display,
-      code: req.body.codeSnippet.code,
-      language: req.body.codeSnippet.language
+      code: req.body.codeSnippet.code
     },
     viewOrder: req.body.viewOrder,
     sticky: req.body.sticky,
