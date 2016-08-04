@@ -53,7 +53,8 @@
     "nodemailer": "^2.5.0",
     "passport": "^0.3.2",
     "passport-jwt": "^1.2.1",
-    "passport-localapikey": "0.0.3"
+    "passport-localapikey": "0.0.3",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -5,6 +5,7 @@
  */
 /* eslint-disable no-console */
 var express             = require('express');
+var favicon             = require('serve-favicon');
 var bodyParser          = require('body-parser');
 var methodOverride      = require('method-override');
 var multer              = require('multer');
@@ -42,6 +43,7 @@ app.use(compress());
 app.use(logger({ filename: './logs/server.log' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(favicon(__dirname + '/favicon.ico'));
 app.use(expressValidator());
 app.use(methodOverride());
 // only allow api calls from whitelisted sites

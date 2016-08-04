@@ -5,10 +5,8 @@
  */
 var whitelist = [
   'http://52.65.106.196',
-  'http://52.65.106.196:80',
   'http://52.65.106.196:8080',
   'http://ec2-52-65-106-196.ap-southeast-2.compute.amazonaws.com',
-  'http://ec2-52-65-106-196.ap-southeast-2.compute.amazonaws.com:80',
   'http://ec2-52-65-106-196.ap-southeast-2.compute.amazonaws.com:8080', 
   'http://codefolio-static.dev',
   'http://localhost:3000',
