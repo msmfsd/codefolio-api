@@ -32,7 +32,7 @@ var app                 = express();
 dotenv.load({ path: '.env' });
 db.start();
 app.set('title', 'Codefolio API');
-app.set('port', 8090);
+app.set('port', 8080);
 if(process.env.NODE_ENV === 'production') app.disable('x-powered-by');
 
 /**

@@ -21,7 +21,7 @@ var adminCredentials = {
   password: process.env.DEV_TEST_ADMIN_PW
 };
 var jwtToken = '';
-var projectId = '579ee0e8a36b2df931e198d5'; // ENSURE EXISTS
+var projectId = '57a04ff019decbfc3a583041'; // ENSURE EXISTS
 var newProjectJSON = {
     role: "Frontend developer",
     description: "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",

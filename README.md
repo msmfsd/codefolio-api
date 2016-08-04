@@ -3,8 +3,8 @@
 > RESTful API for the Codefolio application
 
 #### Requirements
-- npm v3+ & node v5+
-- MongoDB v2.6.5+
+- npm v3+ & node v4+ (v6 recommended)
+- MongoDB v2.6.5+ (v3.2 recommended)
 - Codefolio - [get it here](https://github.com/msmfsd/codefolio).
 
 ## Getting started
@@ -20,7 +20,7 @@
 ## Start dev server
 1. Run ```mongod``` command
 2. Run ```npm dev``` command
-3. Use [Postman](https://www.getpostman.com/) to test your API routes @ [http://localhost:8090/api/](http://localhost:8090/api/)
+3. Use [Postman](https://www.getpostman.com/) to test your API routes @ [http://localhost:8080/api/](http://localhost:8080/api/)
 
 ## Start production server [Linux/Mac]
 1. Upload your code and ensure requirements as above
@@ -40,7 +40,7 @@
 
 > NOTE: Codefolio API & Codefolio are seperate projects that connect with each other to create your developer folio website. This is the RESTful API that performs CRUD operations on data requested by your Codefolio website. The API and front-end application are separated for ease of use, security and best practice.
 
->Locally you can run both servers on different localhost ports: say your Codefolio site is on localhost:3000 and this API is on localhost: 8090. For production you will need 2 public server endpoints and some knowledge of server admin could be advantageous. An example live setup could be:
+>Locally you can run both servers on different localhost ports: say your Codefolio site is on localhost:3000 and this API is on localhost: 8080. For production you will need 2 public server endpoints and some knowledge of server admin could be advantageous. An example live setup could be:
 
 > Codefolio API - create an AWS Ubuntu instance with Nginx/Node/MongoDB
 
