@@ -3,6 +3,8 @@
  * Copyright(c) 2016 MSMFSD
  * MIT Licensed
  */
+var dotenv = require('dotenv');
+dotenv.load({ path: '.env' });
 var devUrl = process.env.FRONTEND_DEV_URL;
 var prodUrl = process.env.FRONTEND_PROD_URL;
 var whitelist = [devUrl, prodUrl, 'http://localhost:3000', 'http://127.0.0.1:3000'];
