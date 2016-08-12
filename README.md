@@ -5,7 +5,7 @@ Codefolio project is an open source build-your-own folio website & CMS for devel
 > Codefolio & Codefolio API are seperate projects that connect with each other to create your developer folio. Codefolio is the static front-end website & CMS that displays your folio to the public and allows you to manage it's content. Codefolio API is a RESTful API server that performs CRUD operations on data requested by your Codefolio site.
 
 #### Demo
-- [View my Codefolio](http://msmfsd.com)
+- [View Codefolio preview](https://goo.gl/photos/fqhDKEvH9RTejUzY9)
 
 #### Requirements
 - npm v3+ & node v4+
