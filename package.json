@@ -1,7 +1,7 @@
 {
   "name": "codefolio-api",
   "version": "1.0.2",
-  "description": "Back-end API for Codefolio application.",
+  "description": "Back-end API for Codefolio application",
   "keywords": [
     "codefolio-api",
     "api",
