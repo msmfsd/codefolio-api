@@ -25,8 +25,8 @@ Codefolio project is an open source build-your-own folio website & CMS for devel
 2. Follow the instructions carefully in the comments of the file
 
 #### Start dev server
-1. Run ```mongod``` command in a seperate terminal window
-2. Run ```npm dev``` command
+1. Run ```mongod``` command in a separate terminal window
+2. Run ```npm run dev``` command
 3. Use [Postman](https://www.getpostman.com/) or a browser to test your API works @ [http://localhost:8080/](http://localhost:8080/)
 4. Install [Codefolio](https://github.com/msmfsd/codefolio) locally to connect to the API and build your folio
 
